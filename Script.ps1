@@ -11,7 +11,7 @@ $headers.Add("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAANELaAEAAAAANsF2y1aOzi
 $headers.Add("Cookie", "ct0=c0b93a352b1ea4fa791226a333803a0b; guest_id=v1%3A164707946344757662")
 
 $response = Invoke-RestMethod "https://api.twitter.com/2/users/by/username/$username" -Method 'GET' -Headers $headers
-$response | ConvertTo-Json
+$response | ConvertTo-Json 
 
 
 "
@@ -38,7 +38,7 @@ want to make a tweet to your twitter account using a script?
 
 
 #hier ga we de user vrage wat hij wil tweeten op zijn account
-$choice = Read-Host "Do you want to make a TWEET?".ToLower()
+$choice = Read-Host "Do you want to make a TWEET? [yes | no]".ToLower()
 if ($choice -eq "yes") {
     $tweet = Read-Host "What do you want to TWEET?"
 
