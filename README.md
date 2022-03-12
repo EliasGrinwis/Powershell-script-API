@@ -1,2 +1,2 @@
 # Powershell-script-API
-dit
+This script is only made for Powershell to connect to your TWITTER API!
