@@ -13,7 +13,7 @@ $headers.Add("Cookie", "ct0=c0b93a352b1ea4fa791226a333803a0b; guest_id=v1%3A1647
 
 $responseUsername = Invoke-RestMethod "https://api.twitter.com/2/users/by/username/$username" -Method 'GET' -Headers $headers
 $responseUsername | ConvertTo-Json
-$responseUsername | ConvertTo-Html | Out-File -Append -FilePath C:\Users\Elias\Desktop\Project\index.html
+$responseUsername | ConvertTo-Html -As Table | Out-File -Append -FilePath C:\Users\Elias\Desktop\Project\index.html
 
  "
  Ok, so here you can find some information about
@@ -30,7 +30,7 @@ $responseUsername | ConvertTo-Html | Out-File -Append -FilePath C:\Users\Elias\D
 
  $responseFollowers = Invoke-RestMethod "https://api.twitter.com/2/users/$followers/followers" -Method 'GET' -Headers $headers
  $responseFollowers | ConvertTo-Json
- $responseFollowers | ConvertTo-Html | Out-File -Append -FilePath C:\Users\Elias\Desktop\Project\index.html
+ $responseFollowers | ConvertTo-Html -As Table | Out-File -Append -FilePath C:\Users\Elias\Desktop\Project\index.html
 
 
  "
@@ -53,7 +53,7 @@ $responseUsername | ConvertTo-Html | Out-File -Append -FilePath C:\Users\Elias\D
 
      $responseTweet = Invoke-RestMethod 'https://api.twitter.com/2/tweets' -Method 'POST' -Headers $headers -Body $body
      $responseTweet | ConvertTo-Json
-     $responseTweet | ConvertTo-Html | Out-File -Append -FilePath C:\Users\Elias\Desktop\Project\index.html
+     $responseTweet | ConvertTo-Html -As Table | Out-File -Append -FilePath C:\Users\Elias\Desktop\Project\index.html
 
  }  else {
      Write-host "
