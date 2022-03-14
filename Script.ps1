@@ -43,9 +43,9 @@ if ($choice -eq "yes") {
     $tweet = Read-Host "What do you want to TWEET?"
 
     $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-    $headers.Add("Authorization", "OAuth oauth_consumer_key=`"rpam0SB4T9eO92nKJ6PLCsAzp`",oauth_token=`"1488143836597657605-fMCqsqotB2hEgklYeJEbUyJXqoC4Sn`",oauth_signature_method=`"HMAC-SHA1`",oauth_timestamp=`"1647105056`",oauth_nonce=`"nFJUmrDIpyW`",oauth_version=`"1.0`",oauth_body_hash=`"XSWk1lAQos1%2FLnojme%2Fn7PNdpUw%3D`",oauth_signature=`"i19Vgdd%2FYL9R8DSXrzwvt8SJv1I%3D`"")
+    $headers.Add("Authorization", "OAuth oauth_consumer_key=`"rpam0SB4T9eO92nKJ6PLCsAzp`",oauth_token=`"1488143836597657605-fMCqsqotB2hEgklYeJEbUyJXqoC4Sn`",oauth_signature_method=`"HMAC-SHA1`",oauth_timestamp=`"1647254999`",oauth_nonce=`"eu65a7psChV`",oauth_version=`"1.0`",oauth_signature=`"GUmHCSeceFEn6LBEwr4B1I54iSc%3D`"")
     $headers.Add("Content-Type", "application/json")
-    $headers.Add("Cookie", "ct0=c0b93a352b1ea4fa791226a333803a0b; guest_id=v1%3A164707946344757662")
+    $headers.Add("Cookie", "guest_id=v1%3A164707946344757662")
 
     $body = "{`n    `"text`": `"$tweet`"`n}"
 
