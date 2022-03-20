@@ -13,7 +13,7 @@ $headers.Add("Cookie", "ct0=c0b93a352b1ea4fa791226a333803a0b; guest_id=v1%3A1647
 
 $responseUsername = Invoke-RestMethod "https://api.twitter.com/2/users/by/username/$username" -Method 'GET' -Headers $headers
 $responseUsername | ConvertTo-Json
-$responseUsername | ConvertTo-Html -As Table | Out-File -Append -FilePath C:\Users\Elias\Desktop\Project\index.html
+$responseUsername | ConvertTo-Json | Out-File -Append -FilePath C:\Users\Elias\Desktop\Project\index.html
 
  "
  Ok, so here you can find some information about
@@ -30,7 +30,7 @@ $responseUsername | ConvertTo-Html -As Table | Out-File -Append -FilePath C:\Use
 
  $responseFollowers = Invoke-RestMethod "https://api.twitter.com/2/users/$followers/followers" -Method 'GET' -Headers $headers
  $responseFollowers | ConvertTo-Json
- $responseFollowers | ConvertTo-Html -As Table | Out-File -Append -FilePath C:\Users\Elias\Desktop\Project\index.html
+ $responseFollowers | ConvertTo-Html | Out-File -Append -FilePath C:\Users\Elias\Desktop\Project\blad.csv
 
 
  "
@@ -45,16 +45,14 @@ $responseUsername | ConvertTo-Html -As Table | Out-File -Append -FilePath C:\Use
      $tweet = Read-Host "What do you want to TWEET?"
 
      $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-     $headers.Add("Authorization", "OAuth oauth_consumer_key=`"rpam0SB4T9eO92nKJ6PLCsAzp`",oauth_token=`"1488143836597657605-fMCqsqotB2hEgklYeJEbUyJXqoC4Sn`",oauth_signature_method=`"HMAC-SHA1`",oauth_timestamp=`"1647254999`",oauth_nonce=`"eu65a7psChV`",oauth_version=`"1.0`",oauth_signature=`"GUmHCSeceFEn6LBEwr4B1I54iSc%3D`"")
+     $headers.Add("Authorization", "OAuth oauth_consumer_key=`"rpam0SB4T9eO92nKJ6PLCsAzp`",oauth_token=`"1488143836597657605-fMCqsqotB2hEgklYeJEbUyJXqoC4Sn`",oauth_signature_method=`"HMAC-SHA1`",oauth_timestamp=`"1647702974`",oauth_nonce=`"EZ5h7g90VtD`",oauth_version=`"1.0`",oauth_signature=`"uFOx03KLB%2BecdBzkbmC8ljodrmM%3D`"")
      $headers.Add("Content-Type", "application/json")
      $headers.Add("Cookie", "guest_id=v1%3A164707946344757662")
-
+     
      $body = "{`n    `"text`": `"$tweet`"`n}"
-
-     $responseTweet = Invoke-RestMethod 'https://api.twitter.com/2/tweets' -Method 'POST' -Headers $headers -Body $body
-     $responseTweet | ConvertTo-Json
-     $responseTweet | ConvertTo-Html -As Table | Out-File -Append -FilePath C:\Users\Elias\Desktop\Project\index.html
-
+     
+     $response = Invoke-RestMethod 'https://api.twitter.com/2/tweets' -Method 'POST' -Headers $headers -Body $body
+     $response | ConvertTo-Json
  }  else {
      Write-host "
  Ok thank, now i have one more question"
@@ -65,7 +63,7 @@ Do you want to clear the HTML file? [yes | no]".ToLower()
  if ($CLearContent -eq "yes") {
      Clear-Content "C:\Users\Elias\Desktop\Project\index.html"
      Write-Host "
-     Ok all your information in your HTML file is deleted"
+ Ok all your information in your HTML file is deleted"
  } else {
      Write-host "
  Ok thank you for doing this script, you can find all your
@@ -73,3 +71,10 @@ Do you want to clear the HTML file? [yes | no]".ToLower()
  information will be added to the index file.
  "
  }
+
+ "
+ Ok thank you for doing this script, you can find all your
+ information in the HTML file. Everytime you do this script again the
+ information will be added to the index file.
+ "
+
