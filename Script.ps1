@@ -13,7 +13,8 @@ $headers.Add("Cookie", "guest_id=v1%3A164788172340091642")
 
 $response = Invoke-RestMethod "https://api.twitter.com/2/users/by/username/$username" -Method 'GET' -Headers $headers
 $response | ConvertTo-Json
-$response | ConvertTo-Html | Out-File C:\Users\Elias\Desktop\Project\IndexTest.html -Append -Encoding ascii
+$response | ConvertTo-csv | Out-File C:\Users\Elias\Desktop\Project\script.csv -Append -Encoding ascii
+
 
 "
  Ok, so here you can find some information about
@@ -32,13 +33,14 @@ $response | ConvertTo-Html | Out-File C:\Users\Elias\Desktop\Project\IndexTest.h
 
     $responseFollowers = Invoke-RestMethod "https://api.twitter.com/2/users/$followers/followers" -Method 'GET' -Headers $headers
     $responseFollowers | ConvertTo-Json
-    $responseFollowers | ConvertTo-Html | Out-File C:\Users\Elias\Desktop\Project\IndexTest.html -Append -Encoding ascii
+    $responseFollowers | ConvertTo-Csv | Out-File C:\Users\Elias\Desktop\Project\script.csv -Append -Encoding ascii
 
 "
  Ok so now you have a list of your followers but do you maybe
  want to make a tweet to your twitter account using a script?
  "
- } else { Write-Host "Ok, I have one more question"
+ } else { "No list" | Out-File C:\Users\Elias\Desktop\Project\script.csv -Append -Encoding ascii
+     Write-Host "Ok, I have one more question" 
  }
 
  $choice = Read-Host "Do you want to make a TWEET? [yes | no]"
@@ -53,9 +55,17 @@ $response | ConvertTo-Html | Out-File C:\Users\Elias\Desktop\Project\IndexTest.h
 
         $responseTweet = Invoke-RestMethod 'https://api.twitter.com/2/tweets' -Method 'POST' -Headers $headers -Body $body
         $responseTweet | ConvertTo-Json 
-        $responseTweet | ConvertTo-Html | Out-File C:\Users\Elias\Desktop\Project\IndexTest.html -Append -Encoding ascii
+        $responseTweet | ConvertTo-csv | Out-File C:\Users\Elias\Desktop\Project\script.csv -Append -Encoding ascii
 
  }  else {
-     Write-host "
- Thankyou for doing my script. You can run this script everytime you want!!"
+     "No Tweet" | Out-File C:\Users\Elias\Desktop\Project\script.csv -Append -Encoding ascii
  }
+
+ $clearContent = Read-Host "Ok so now I asked you 3 questions but do you want to clear the csv file? [yes | no]"
+ if ($clearContent -eq "yes") {
+     clear-Content "C:\Users\Elias\Desktop\Project\script.csv"
+     Write-Host "Your csv file is now cleared"
+ } 
+
+
+ "Thankyou for doing my script. You can run this script everytime you want!!"
