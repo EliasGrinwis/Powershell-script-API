@@ -46,16 +46,16 @@ $response | ConvertTo-csv | Out-File C:\Users\Elias\Desktop\Project\script.csv -
  $choice = Read-Host "Do you want to make a TWEET? [yes | no]"
  if ($choice -eq "yes") {
      $tweet = Read-Host "What do you want to TWEET?"
-        $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-        $headers.Add("Authorization", "OAuth oauth_consumer_key=`"rpam0SB4T9eO92nKJ6PLCsAzp`",oauth_token=`"1488143836597657605-fMCqsqotB2hEgklYeJEbUyJXqoC4Sn`",oauth_signature_method=`"HMAC-SHA1`",oauth_timestamp=`"1648214851`",oauth_nonce=`"e7vsTkX0IGT`",oauth_version=`"1.0`",oauth_signature=`"WWvwurKRoW2w7BAbD4s5fbeUGJ0%3D`"")
-        $headers.Add("Content-Type", "application/json")
-        $headers.Add("Cookie", "guest_id=v1%3A164787151794347198")
-
-        $body = "{`n    `"text`": `"$tweet`"`n}"
-
-        $responseTweet = Invoke-RestMethod 'https://api.twitter.com/2/tweets' -Method 'POST' -Headers $headers -Body $body
-        $responseTweet | ConvertTo-Json 
-        $responseTweet | ConvertTo-csv | Out-File C:\Users\Elias\Desktop\Project\script.csv -Append -Encoding ascii
+     $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+     $headers.Add("Authorization", "OAuth oauth_consumer_key=`"rpam0SB4T9eO92nKJ6PLCsAzp`",oauth_token=`"1488143836597657605-fMCqsqotB2hEgklYeJEbUyJXqoC4Sn`",oauth_signature_method=`"HMAC-SHA1`",oauth_timestamp=`"1648643735`",oauth_nonce=`"rckAc9CHM92`",oauth_version=`"1.0`",oauth_signature=`"rz2JPmxX%2FQZarcKYm230wsMttCU%3D`"")
+     $headers.Add("Content-Type", "application/json")
+     $headers.Add("Cookie", "guest_id=v1%3A164787151794347198")
+     
+     $body = "{`n    `"text`": `"$tweet`"`n}"
+     
+     $responseTweet = Invoke-RestMethod 'https://api.twitter.com/2/tweets' -Method 'POST' -Headers $headers -Body $body
+     $responseTweet | ConvertTo-Json
+    $responseTweet | ConvertTo-csv | Out-File C:\Users\Elias\Desktop\Project\script.csv -Append -Encoding ascii
 
  }  else {
      "No Tweet" | Out-File C:\Users\Elias\Desktop\Project\script.csv -Append -Encoding ascii
