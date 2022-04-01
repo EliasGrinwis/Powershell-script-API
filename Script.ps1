@@ -5,10 +5,10 @@
 "
 
 #Dit gaat de de ID van de user terug geven en de naam
-$username = Read-Host "Give me your Twitter account and i will give you your Twitter ID"
+$username = Read-Host "Give me your Twitter account and I will give you your Twitter ID"
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-$headers.Add("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAANELaAEAAAAANsF2y1aOzi1URzYP%2BlBEqm6SasI%3DDZAg2pzCdexxOaxfMhcw8cRRKimZVNlT0EVXaYp9VLBHzKZU0x")
+$headers.Add("Authorization", "Bearer $baererToken")
 $headers.Add("Cookie", "guest_id=v1%3A164788172340091642")
 
 $response = Invoke-RestMethod "https://api.twitter.com/2/users/by/username/$username" -Method 'GET' -Headers $headers
@@ -28,7 +28,7 @@ $response | ConvertTo-csv | Out-File C:\Users\Elias\Desktop\Project\script.csv -
     $followers = Read-Host "Give me your Twitter id and i will give you a list of your followers"
 
     $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-    $headers.Add("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAANELaAEAAAAANsF2y1aOzi1URzYP%2BlBEqm6SasI%3DDZAg2pzCdexxOaxfMhcw8cRRKimZVNlT0EVXaYp9VLBHzKZU0x")
+    $headers.Add("Authorization", "Bearer $baererToken")
     $headers.Add("Cookie", "ct0=c0b93a352b1ea4fa791226a333803a0b; guest_id=v1%3A164707946344757662")
 
     $responseFollowers = Invoke-RestMethod "https://api.twitter.com/2/users/$followers/followers" -Method 'GET' -Headers $headers
@@ -47,7 +47,7 @@ $response | ConvertTo-csv | Out-File C:\Users\Elias\Desktop\Project\script.csv -
  if ($choice -eq "yes") {
      $tweet = Read-Host "What do you want to TWEET?"
      $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-     $headers.Add("Authorization", "OAuth oauth_consumer_key=`"rpam0SB4T9eO92nKJ6PLCsAzp`",oauth_token=`"1488143836597657605-fMCqsqotB2hEgklYeJEbUyJXqoC4Sn`",oauth_signature_method=`"HMAC-SHA1`",oauth_timestamp=`"1648643735`",oauth_nonce=`"rckAc9CHM92`",oauth_version=`"1.0`",oauth_signature=`"rz2JPmxX%2FQZarcKYm230wsMttCU%3D`"")
+     $headers.Add("Authorization", "OAuth oauth_consumer_key=`"$consumerKey`",oauth_token=`"1488143836597657605-fMCqsqotB2hEgklYeJEbUyJXqoC4Sn`",oauth_signature_method=`"HMAC-SHA1`",oauth_timestamp=`"1648643735`",oauth_nonce=`"rckAc9CHM92`",oauth_version=`"1.0`",oauth_signature=`"rz2JPmxX%2FQZarcKYm230wsMttCU%3D`"")
      $headers.Add("Content-Type", "application/json")
      $headers.Add("Cookie", "guest_id=v1%3A164787151794347198")
      
